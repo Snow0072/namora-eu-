@@ -1,0 +1,160 @@
+Me Namora
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Uma Mensagem Especial 💖</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    background:#FFF0F5;
+    font-family:Georgia, serif;
+    text-align:center;
+    overflow:hidden;
+}
+
+h1{
+    color:#FF1493;
+}
+
+.mensagem{
+    max-width:800px;
+    margin:auto;
+    color:#5A3D5C;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.pergunta{
+    margin-top:20px;
+    font-size:30px;
+    color:#FF1493;
+    font-weight:bold;
+}
+
+#sim{
+    background:#FF69B4;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:15px;
+    font-size:22px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#nao{
+    background:#FFB6C1;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:15px;
+    font-size:22px;
+    cursor:pointer;
+    position:absolute;
+}
+
+#resultado{
+    margin-top:20px;
+    font-size:28px;
+    color:#C71585;
+    font-weight:bold;
+}
+
+.coracao{
+    position:fixed;
+    top:-50px;
+    font-size:24px;
+    animation:cair linear infinite;
+}
+
+@keyframes cair{
+    from{
+        transform:translateY(-50px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>💌 Uma Mensagem Para Você 💌</h1>
+
+<div class="mensagem">
+Bom, eu sei que errei muito e queria pedir desculpas por tudo o que fiz com você.<br><br>
+
+Saiba que eu te amo de verdade. Nunca tive a intenção de te magoar
+ou fazer você sentir ódio de mim.<br><br>
+
+Você é uma das pessoas mais importantes da minha vida.
+Foi graças a você que encontrei forças para continuar em momentos difíceis.<br><br>
+
+Eu não quero te perder.<br><br>
+
+Por isso, queria te fazer uma pergunta muito especial...
+</div>
+
+<div class="pergunta">
+❤️ Você aceita namorar comigo? ❤️
+</div>
+
+<br>
+
+<button id="sim">Sim ❤️</button>
+<button id="nao">Não 😢</button>
+
+<div id="resultado"></div>
+
+<script>
+
+const nao = document.getElementById("nao");
+
+function fugir(){
+    const largura = window.innerWidth - 150;
+    const altura = window.innerHeight - 100;
+
+    nao.style.left = Math.random()*largura + "px";
+    nao.style.top = Math.random()*altura + "px";
+}
+
+nao.addEventListener("mouseover", fugir);
+nao.addEventListener("touchstart", fugir);
+
+document.getElementById("sim").onclick = () => {
+    document.getElementById("resultado").innerHTML =
+    "💖 Você acabou de me fazer a pessoa mais feliz do mundo! 💖";
+
+    for(let i=0;i<100;i++){
+        criarCoracao();
+    }
+};
+
+function criarCoracao(){
+    const heart = document.createElement("div");
+    heart.classList.add("coracao");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration =
+    (Math.random()*5+4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+}
+
+setInterval(()=>{
+    criarCoracao();
+},500);
+
+</script>
+
+</body>
+</html>
